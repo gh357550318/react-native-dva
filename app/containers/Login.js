@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Image, ActivityIndicator } from 'react-native'
 import { connect } from 'react-redux'
 
-import { Button } from '../components'
+import { Button, Touchable } from '../components'
 
-import { NavigationActions } from '../utils'
+import { createAction, NavigationActions } from '../utils'
 
 @connect(({ app }) => ({ ...app }))
 class Login extends Component {
@@ -13,14 +13,21 @@ class Login extends Component {
   }
 
   onLogin = () => {
-    this.props.dispatch(NavigationActions.navigate({ routeName: 'Home' }))
+    this.props.dispatch({
+      type:'app/login'
+    })
   }
 
 
   render() {
+    const { fetching } = this.props
     return (
       <View style={styles.container}>
-          <Button text="Login" onPress={this.onLogin}/>
+        {fetching ? (
+          <ActivityIndicator />
+        ) : (
+          <Button text="Login" onPress={this.onLogin} />
+        )}
       </View>
     )
   }
