@@ -89,7 +89,7 @@ export default function request(url, option, timeout = 10000) {
   }
 
   return (
-    timeoutFetch(fetch(url, newOptions))
+    fetch(url, newOptions))
       .then(checkStatus)
       // .then(response => cachedSave(response, hashcode))
       .then(response => {
@@ -123,5 +123,5 @@ export default function request(url, option, timeout = 10000) {
           Toast.fail(`请求错误 ${status}`)
         }
       })
-  )
+  
 }

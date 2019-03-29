@@ -18,3 +18,10 @@ const app = dva({
 const App = app.start(<Router />)
 
 AppRegistry.registerComponent('DvaStarter', () => App)
+
+if (__DEV__) {
+  // 用于在开发者工具中显示网络请求
+  global.XMLHttpRequest = global.originalXMLHttpRequest || global.XMLHttpRequest
+}
+
+export default app._store // eslint-disable-line
