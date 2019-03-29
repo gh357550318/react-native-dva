@@ -1,0 +1,2 @@
+yarn 
+react-native link
